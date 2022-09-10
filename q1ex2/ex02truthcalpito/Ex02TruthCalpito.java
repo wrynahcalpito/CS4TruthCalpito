@@ -64,12 +64,19 @@ public class Ex02TruthCalpito {
 
             else if(userDecision.equalsIgnoreCase("change settings")) {
                 //changing the settings
-                System.out.print("Lower limit: ");
-                lowerLimit = sc.nextInt();
-                System.out.print("Upper limit: ");
-                upperLimit = sc.nextInt();
-                System.out.print("Guesses: ");
-                guessesLimit = sc.nextInt();
+                
+                do {
+                    System.out.print("Lower limit: ");
+                    lowerLimit = sc.nextInt();
+                    System.out.print("Upper limit: ");
+                    upperLimit = sc.nextInt();
+                    System.out.print("Guesses: ");
+                    guessesLimit = sc.nextInt();
+                    
+                    if(lowerLimit >= upperLimit) {
+                        System.out.print("\nYour lower limit is either greater than or equal to the upper limit which is invalid. Please try again.\n\n");
+                    }
+                } while(lowerLimit >= upperLimit);
                 
                 /** checking
                 System.out.println(lowerLimit);
@@ -78,7 +85,7 @@ public class Ex02TruthCalpito {
             }
 
             else if(userDecision.equalsIgnoreCase("end application")) {
-                System.out.print("\nThank you for playing!");
+                System.out.print("\nThank you for playing!\n");
                 isPlaying = false;
             }
             
