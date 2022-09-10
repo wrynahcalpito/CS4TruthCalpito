@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ex01.truth.calpito;
+package ex01truthcalpito;
 
 /**
  *
@@ -45,3 +45,4 @@ public class Ex01TruthCalpito {
         System.out.print(age4 > age1);
     }   
 }
+
