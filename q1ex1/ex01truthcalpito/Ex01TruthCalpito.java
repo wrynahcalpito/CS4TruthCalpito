@@ -28,21 +28,16 @@ public class Ex01TruthCalpito {
         String position3 = "Keyboard/Synth";
         int age3 = 28;
 
-        String member4 = "Dowoon";
+        String member4 = "Yoon Dowoon";
         String position4 = "Drummer";
         int age4 = 27;
+        
+        //operations & comparisons
+        int totalAge = age1 + age2 + age3 + age4;
+        boolean isDifferentPosition = position2 != position1;
+        boolean isOlder = age4 > age1;
 
         //printing information
-        System.out.printf("ALL YOU NEED TO KNOW ABOUT DAY6 MEMBERS (2022) \n\n%s \n%s \n%d \n\n%s \n%s  \n%d \n\n%s \n%s \n%d \n\n%s \n%s \n%d", member1, position1, age1, member2, position2, age2, member3, position3, age3, member4, position4, age4);
-
-        //operations
-        int totalAge = age1 + age2 + age3 + age4;
-
-        System.out.printf("\n \nFUN FACTS & FAQs \n \nHow old is DAY6 altogether? %d years old \n\n%s does not have the same position as %s: ", totalAge, member2, member1);
-        System.out.print(position2 != position1);
-
-        System.out.printf("\n\n%s is older than %s: ", member4, member1);
-        System.out.print(age4 > age1);
+        System.out.printf("ALL YOU NEED TO KNOW ABOUT DAY6 MEMBERS (2022) \n\n%s \n%s \n%d \n\n%s \n%s \n%d \n\n%s \n%s \n%d \n\n%s \n%s \n%d \n\nFUN FACTS & FAQs \n\nHow old is DAY6 altogether? %d years old \n%s does not have the same position as %s: %b \n%s is older than %s: %b \n\n", member1, position1, age1, member2, position2, age2, member3, position3, age3, member4, position4, age4, totalAge, member2, member1, isDifferentPosition, member4, member1, isOlder);
     }   
 }
-
