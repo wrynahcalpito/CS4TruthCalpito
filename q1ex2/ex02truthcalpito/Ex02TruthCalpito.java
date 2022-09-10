@@ -17,35 +17,49 @@ public class Ex02TruthCalpito {
     public static void main(String[] args) {
         int guessesLimit = 3; 
         int lowerLimit = 1;
-        int upperLimit =10;
+        int upperLimit = 10;
         boolean isPlaying = true;
         
         while (isPlaying) {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Welcome to Higher or Lower! What will you do? \n-Start game \n-Change settings \n-End application\n");
+            System.out.print("\nWelcome to Higher or Lower! What will you do? \n-Start game \n-Change settings \n-End application\nEnter: ");
             String userDecision = sc.nextLine();
 
             if(userDecision.equalsIgnoreCase("start game")) {
-                int random = (int) Math.floor(Math.random()*10) + 1;
+                int random = (int) Math.floor(Math.random()*upperLimit) + lowerLimit;
+                int guessesLeft = guessesLimit - 1;
+                boolean isRight = false;
                 
-                do {
-                    System.out.printf("What is the number? ", guessesLimit);
+                while(!isRight) {                    
+                    System.out.print("\nWhat is the number? ");
                     int ans = sc.nextInt();
-
-                    for(int guessesLeft = guessesLimit - 1; guessesLeft > 0; guessesLeft--) {
+                    
+                    if (guessesLeft == 0) {
+                        System.out.printf("\nYou do not have guesses left. Sorry!\nThe answer is %d.\n", random);
+                        break;
+                    }
+                                      
+                    if(ans >= lowerLimit && ans <= upperLimit) {
                         if(random > ans) {
-                            System.out.printf("Guess higher! You have %d guess(es) left.", guessesLeft);
+                            System.out.printf("Guess higher! You have %d guess(es) left.", guessesLeft); 
                         }
 
                         else if (random < ans) {
-                            System.out.printf("Guess lower! You have %d guess(es) left. What is your guess?", guessesLeft);
+                            System.out.printf("Guess lower! You have %d guess(es) left.", guessesLeft);
                         }
-                        
+
                         else if (random == ans) {
-                            System.out.printf("You are right!");
+                            System.out.printf("\nYou are right! The number is %d and you got it with %d guess(es) left.\n", random, guessesLeft);
+                            isRight = true;
                         }
-                    } 
-                } while(ans != random);
+                    }
+                    
+                    else if (ans > upperLimit || ans < lowerLimit) {
+                        System.out.printf("\nInvalid input. Your answer must be between %d and %d. Please try again.\nYou have %d guess(es) left.\n", lowerLimit, upperLimit, guessesLeft);
+                    }
+                    
+                    guessesLeft--;
+                }
             }
 
             else if(userDecision.equalsIgnoreCase("change settings")) {
@@ -57,17 +71,20 @@ public class Ex02TruthCalpito {
                 System.out.print("Guesses: ");
                 guessesLimit = sc.nextInt();
                 
-                //checking
-                /** System.out.println(lowerLimit);
+                /** checking
+                System.out.println(lowerLimit);
                 System.out.println(upperLimit);
                 System.out.println(guessesLimit); **/
             }
 
             else if(userDecision.equalsIgnoreCase("end application")) {
-                System.out.print("Thank you for playing!");
+                System.out.print("\nThank you for playing!");
                 isPlaying = false;
+            }
+            
+            else {
+                System.out.print("\nInvalid input. Please try again to play Higher or Lower!\n");
             }
         }
     }
-    
 }
