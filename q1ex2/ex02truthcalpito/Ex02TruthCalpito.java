@@ -24,23 +24,39 @@ public class Ex02TruthCalpito {
             Scanner sc = new Scanner(System.in);
             System.out.print("\nWelcome to Higher or Lower! What will you do? \n-Start game \n-Change settings \n-End application\nEnter: ");
             String userDecision = sc.nextLine();
-
+            
             if(userDecision.equalsIgnoreCase("start game")) {
                 int random = (int) Math.floor(Math.random()*upperLimit) + lowerLimit;
-                int guessesLeft = guessesLimit - 1;
-                boolean isRight = false;
+                int guessesLeft = guessesLimit;
+                boolean doAgain = true;
                 
-                while(!isRight) {                    
+                System.out.printf("\nRange: %d to %d", lowerLimit, upperLimit);
+                
+                while(doAgain) {                    
                     System.out.print("\nWhat is the number? ");
                     int ans = sc.nextInt();
-                    
-                    if (guessesLeft == 0) {
-                        System.out.printf("\nYou do not have guesses left. Sorry!\nThe answer is %d.\n", random);
-                        break;
-                    }
+                    guessesLeft--;
                                       
                     if(ans >= lowerLimit && ans <= upperLimit) {
-                        if(random > ans) {
+                        
+                        if (guessesLeft == 0) {
+                            System.out.printf("\nYou do not have guesses left. Sorry!\nThe answer is %d.\n\nDo you want to play again? (y/n): ", random);
+                            char playAgain = sc.next().charAt(0);
+
+                            switch(playAgain) {
+                                case 'n':
+                                    doAgain = false;
+                                    break;
+                                case 'y':
+                                    guessesLeft = guessesLimit;
+                                    random = (int) Math.floor(Math.random()*upperLimit) + lowerLimit;
+                                    continue;
+                                default:
+                                    System.out.print("\nSorry, invalid input."); 
+                            }
+                        }
+                        
+                        else if(random > ans) {
                             System.out.printf("Guess higher! You have %d guess(es) left.", guessesLeft); 
                         }
 
@@ -49,22 +65,31 @@ public class Ex02TruthCalpito {
                         }
 
                         else if (random == ans) {
-                            System.out.printf("\nYou are right! The number is %d and you got it with %d guess(es) left.\n", random, guessesLeft);
-                            isRight = true;
+                            System.out.printf("\nYou are right! The number is %d and you got it with %d guess(es) left.\n\nDo you want to play again? (y/n): ", random, guessesLeft);
+                            char playAgain = sc.next().charAt(0);
+                        
+                            switch(playAgain) {
+                                case 'n':
+                                    doAgain = false;
+                                    break;
+                                case 'y':
+                                    guessesLeft = guessesLimit;
+                                    random = (int) Math.floor(Math.random()*upperLimit) + lowerLimit;
+                                    continue;
+                                default:
+                                    System.out.print("\nSorry, invalid input."); 
+                            }
                         }
                     }
                     
                     else if (ans > upperLimit || ans < lowerLimit) {
                         System.out.printf("\nInvalid input. Your answer must be between %d and %d. Please try again.\nYou have %d guess(es) left.\n", lowerLimit, upperLimit, guessesLeft);
                     }
-                    
-                    guessesLeft--;
                 }
             }
 
             else if(userDecision.equalsIgnoreCase("change settings")) {
                 //changing the settings
-                
                 do {
                     System.out.print("Lower limit: ");
                     lowerLimit = sc.nextInt();
