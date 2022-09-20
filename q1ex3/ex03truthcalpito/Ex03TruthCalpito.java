@@ -21,11 +21,10 @@ public class Ex03TruthCalpito {
         Listener carla = new Listener("Carla", "Pretty Boy", "Red Velvet", "K-pop");
         carla.introduceListener();
         
-        Singer KimWonpil = new Singer("Kim Wonpil", 0, 0, new Song("Sincerity", 3.23, 'D', new Album("Pilmography", 10, 36.58)));
-        KimWonpil.getInfo();
-        KimWonpil.performForAudience(12); 
-        KimWonpil.changeFavSong("A writer in a love story", 3.45, 'C', new Album("Pilmography", 10, 36.58));
-        KimWonpil.getInfo();
+        Singer wonpil = new Singer("Kim Wonpil", new Song("Sincerity", 3.23, 'D', "Pilmography"));
+        wonpil.getInfo();
+        wonpil.performForAudience(12); 
+        wonpil.changeFavSong("A writer in a love story", 3.45, 'C', "Pilmography");
+        wonpil.getInfo();
     }
-    
 }
