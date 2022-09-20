@@ -8,20 +8,33 @@ package ex03truthcalpito;
  *
  * @author USER
  */
-public class Listener {
+public class Singer {
     String name;
-    String favoriteSong;
-    String favoriteArtist;
-    String favoriteGenre;
+    int noOfPerformances;
+    double earnings;
+    Song favoriteSong;
     
-    public Listener (String name, String favoriteSong, String favoriteArtist, String favoriteGenre) {
-        this.name = name;
+    public Singer (String name, Song favoriteSong) {
+        this.name = name; 
         this.favoriteSong = favoriteSong;
-        this.favoriteArtist = favoriteArtist;
-        this.favoriteGenre = favoriteGenre;
+        this.noOfPerformances = 0;
+        this.earnings = 0;
     }
     
-    public void introduceListener() {
-        System.out.printf("\nHi! I am %s. My favorite song is %s and my favorite artist is %s. I like %s!\n", name, favoriteSong, favoriteArtist, favoriteGenre);
-    }
+    //get information
+    public void getInfo() {
+        System.out.printf("\n%s has performed %d time(s) and has %.2f total earning(s). His favorite song is %s in the key of %c and lasting for %.2f minutes. It is from the album %s.\n", name, noOfPerformances, earnings, favoriteSong.name, favoriteSong.key, favoriteSong.duration, favoriteSong.fromAlbum);
+    } 
+    
+    //increases noOfPerformances by 1 and earnings by 100 for each person (e.g. 5 people results in 500 increase)
+    public void performForAudience(int noOfPeople) {
+        noOfPerformances += 1;
+        earnings += 100*noOfPeople;
+        
+        System.out.printf("\n%s performed %s for %d person(s). After the performance, they now have %.2f total earning(s) and %d performance(s) in their career.\n", name, favoriteSong.name, noOfPeople, earnings, noOfPerformances);
+    } 
+    
+    public void changeFavSong(String name, double duration, char key, String fromAlbum) {
+        favoriteSong = new Song(name, duration, key, fromAlbum);
+    } 
 }
