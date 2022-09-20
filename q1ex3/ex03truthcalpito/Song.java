@@ -12,9 +12,9 @@ public class Song {
     String name;
     double duration;
     char key;
-    Album fromAlbum;
+    String fromAlbum;
     
-    public Song (String name, double duration, char key, Album fromAlbum) {
+    public Song (String name, double duration, char key, String fromAlbum) {
         this.name = name;
         this.duration = duration;
         this.key = key;
