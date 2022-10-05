@@ -43,14 +43,6 @@ public class Singer {
     public int getNoOfPerformances() {
         return noOfPerformances;
     }
-    
-    /**
-    public getTotalPerformances() {
-        
-        for (int i = 0; Singer[i].noOfPerformances != 0, i++){
-            System.out.println(Singer[i].noOfPerformances);
-        }
-    } **/
         
     public double getEarnings() {
         return earnings;
@@ -64,19 +56,21 @@ public class Singer {
     //increases noOfPerformances by 1 and earnings by 100 for each person (e.g. 5 people results in 500 increase)
     public void performForAudience(int noOfPeople) {
         noOfPerformances += 1;
+        totalPerformances += 1; 
         earnings += 100*noOfPeople;
         
+        //System.out.println(totalPerformances); (for testing)
         System.out.printf("\n%s performed %s for %d person(s). After the performance, they now have %.2f total earning(s) and %d performance(s) in their career.\n", name, favoriteSong.getName(), noOfPeople, earnings, noOfPerformances);
     } 
     //2 singers performing together
     public void performForAudience(Singer otherSinger, int noOfPeople){
         noOfPerformances += 1;
         otherSinger.noOfPerformances += 1;
+        //totalPerformances += 1; (for testing)
         earnings += (100*noOfPeople)/2;
         otherSinger.earnings += (100*noOfPeople)/2;
         
+        //System.out.println(totalPerformances); (for testing)
         System.out.printf("\n%s and %s performed %s and %s together for %d person(s). After the performance, they now have %.2f total earning(s) each and %d performance(s) in their career.\n", name, otherSinger.name, favoriteSong.getName(), otherSinger.favoriteSong.getName(), noOfPeople, earnings, noOfPerformances);
     }
-    
-    //
 }
