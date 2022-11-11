@@ -14,15 +14,32 @@ public class Ex06TruthCalpitoWrynahDale {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FireType f1 = new FireType("Firey", 20, 10);
-        WaterType w1 = new WaterType("Watery", 10, 20);
-        GrassType g1 = new GrassType("Grassy", 15, 15);
+        FireType f1 = new FireType("Tepig", 20, 10);
+        WaterType w1 = new WaterType("Sobble", 10, 20);
+        GrassType g1 = new GrassType("Chikorita", 15, 15);
         
-        do {
+        while (f1.getIsAlive() && g1.getIsAlive() && w1.getIsAlive()) {
+            f1.charge();
             f1.attack(w1);
+            w1.guard();
+            
+            if(!f1.getIsAlive() || !w1.getIsAlive()) {
+                break;
+            }
+            
             w1.attack(g1);
+            g1.guard();
+            
+            if(!w1.getIsAlive() || !g1.getIsAlive()) {
+                break;
+            }
+            
+            g1.charge();
             g1.attack(f1);
-        } while(f1.getHP() > 0 && w1.getHP() > 0 && g1.getHP() > 0);
+            
+            if(!g1.getIsAlive() || !f1.getIsAlive()) {
+                break;
+            }
+        } 
     }
-    
 }
