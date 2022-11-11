@@ -9,7 +9,7 @@ public class Monster {
     protected final String name, type, strongAgainst, weakAgainst; //private fields are changed to protected
     protected int maxHP, hp, xp, lvl;
     protected double atk, def; //changed from int to double
-    protected boolean guard, charge;
+    protected boolean guard, charge, isAlive = true; //added a boolean which indicates if they are alive or not
     protected static ArrayList<Monster> monsterList = new ArrayList<>();
 
     public Monster(String n, String t, String s, String w, int m, int base){
@@ -46,7 +46,10 @@ public class Monster {
     public static ArrayList<Monster> getMonsterList() {
         return monsterList;
     }
-
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+    
     public void attack(Monster m){
         int damage = (int) ((atk*atk)/(double)(atk+m.getDef()));    // damage is calculated as double, then cast as int
         boolean strong = false, weak = false;
@@ -78,7 +81,8 @@ public class Monster {
             m.hp = 0;
             System.out.println(m.getName() + " fainted.");
             gainXP(10);                                             // defeating a monster raises XP by 10
-        }
+            isAlive = false; //declares that they are no longer alive
+        }        
     }
 
     public void guard(){
