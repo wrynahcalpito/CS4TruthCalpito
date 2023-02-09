@@ -15,7 +15,7 @@ public class Exercise11TruthCalpitoWrynahDale extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("PSHS-MC Student Records");
+        primaryStage.setTitle("PSHS-MC Subject Records");
         
         //INITIALIZING VARIABLES
         Subject math = new Subject("Math", "math.png", 4, 1.75);
@@ -24,7 +24,7 @@ public class Exercise11TruthCalpitoWrynahDale extends Application {
         Subject physics = new Subject("Physics", "physics.png", 3, 1.75);
         Subject cs = new Subject("CS", "computer science.png", 1, 1.5);
       
-        Subject displayedSubject = chem;
+        Subject displayedSubject = bio;
 
         //SETTING LAYOUT
         FlowPane root = new FlowPane();
@@ -39,19 +39,19 @@ public class Exercise11TruthCalpitoWrynahDale extends Application {
       
         //ADDING TEXT
         Text name = new Text(displayedSubject.getName());
-        name.setFill(Color.BLUE);
+        name.setFill(Color.BLACK);
         name.setFont(new Font("Times New Roman", 15));
         root.getChildren().add(name);
 
         String str1 = Double.toString(displayedSubject.getUnits());
-        Text units = new Text(" | "+str1);
-        units.setFill(Color.BLUE);
+        Text units = new Text("  |  "+str1);
+        units.setFill(Color.ORANGE);
         units.setFont(new Font("Calibri", 12));
         root.getChildren().add(units);
 
         String str2 = Double.toString(displayedSubject.getGrade());
-        Text grade = new Text(" | "+str2);
-        grade.setFill(Color.BLUE);
+        Text grade = new Text("  |  "+str2+"     ");
+        grade.setFill(Color.ORANGE);
         grade.setFont(new Font("Calibri", 12));
         root.getChildren().add(grade);
         
@@ -69,5 +69,4 @@ public class Exercise11TruthCalpitoWrynahDale extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-     
 }
